@@ -1,7 +1,5 @@
 package app
 
-// blank code for [AGo]nist
-
 import (
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/app"
@@ -18,47 +16,55 @@ func Run() {
 	agonistMainWindow.SetIcon(agonistIconFile)
 	agonistMainWindow.CenterOnScreen()
 
-	agonistCanvas := agonistMainWindow.Canvas()
+	blankLabel := widget.NewLabel("Blank label")
 
-	homeLabel := widget.NewLabel("Home")
-	alphabetLabel := widget.NewLabel("Alphabet order")
-	superannuateLabel := widget.NewLabel("Superannuate")
-	clarificationLabel := widget.NewLabel("Clarification")
-	ch := widget.NewSelect(
-		[]string{
-			"Option 1",
-			"Option 2",
-			"Option 3",
-		},
-		nil,
-	)
-	workSpace := container.NewVBox(homeLabel, ch)
+	settingsCard := widget.NewCard("Settings", "You need to fill in and save the settings for the further correct operation of the program.", blankLabel)
+	alphabetCard := widget.NewCard("Checking alphabetical order.", "Here you can check if the package list is in alphabetical order.", blankLabel)
+	superannuateCard := widget.NewCard("Checking for outdated packages.", "A package is considered obsolete if it has not been updated for more than a year.", blankLabel)
+	aboutCard := widget.NewCard("About.", "Information about the program, author and external components.", blankLabel)
 
-	homeBtn := widget.NewButton("Home", func() {
-		workSpace.Objects = []fyne.CanvasObject{
-			homeLabel,
-			ch,
-		}
+	workSpace := container.NewVBox(settingsCard, alphabetCard, superannuateCard, aboutCard)
+	settingsCard.Show()
+	alphabetCard.Hide()
+	superannuateCard.Hide()
+	aboutCard.Hide()
+
+	homeIcon, _ := fyne.LoadResourceFromPath("./static/img/icon-home-64.png")
+	homeBtn := widget.NewButtonWithIcon("", homeIcon, func() {
+		settingsCard.Show()
+		alphabetCard.Hide()
+		superannuateCard.Hide()
+		aboutCard.Hide()
 	})
-	alphabet := widget.NewButton("Alphabet order", func() {
-		workSpace.Objects = []fyne.CanvasObject{
-			alphabetLabel,
-		}
+
+	alphabetIcon, _ := fyne.LoadResourceFromPath("./static/img/icon-info-64.png")
+	alphabetBtn := widget.NewButtonWithIcon("", alphabetIcon, func() {
+		settingsCard.Hide()
+		alphabetCard.Show()
+		superannuateCard.Hide()
+		aboutCard.Hide()
 	})
-	superannuate := widget.NewButton("Superannuate", func() {
-		workSpace.Objects = []fyne.CanvasObject{
-			superannuateLabel,
-		}
+
+	superannuateIcon, _ := fyne.LoadResourceFromPath("./static/img/icon-clock-64.png")
+	superannuateBtn := widget.NewButtonWithIcon("", superannuateIcon, func() {
+		settingsCard.Hide()
+		alphabetCard.Hide()
+		superannuateCard.Show()
+		aboutCard.Hide()
 	})
-	clarification := widget.NewButton("Clarification", func() {
-		workSpace.Objects = []fyne.CanvasObject{
-			clarificationLabel,
-		}
+
+	aboutIcon, _ := fyne.LoadResourceFromPath("./static/img/icon-about-64.png")
+	aboutBtn := widget.NewButtonWithIcon("", aboutIcon, func() {
+		settingsCard.Hide()
+		alphabetCard.Hide()
+		superannuateCard.Hide()
+		aboutCard.Show()
 	})
-	mainMenuBox := container.NewVBox(homeBtn, alphabet, superannuate, clarification)
+
+	mainMenuBox := container.NewVBox(homeBtn, alphabetBtn, superannuateBtn, aboutBtn)
 
 	mainHBox := container.NewHBox(mainMenuBox, workSpace)
 
-	agonistCanvas.SetContent(mainHBox)
+	agonistMainWindow.SetContent(mainHBox)
 	agonistMainWindow.ShowAndRun()
 }
