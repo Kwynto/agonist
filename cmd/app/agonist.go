@@ -18,8 +18,6 @@ func Run() {
 	agonistMainWindow.SetIcon(agonistIconFile)
 	agonistMainWindow.CenterOnScreen()
 
-	agonistCanvas := agonistMainWindow.Canvas()
-
 	homeLabel := widget.NewLabel("Home")
 	alphabetLabel := widget.NewLabel("Alphabet order")
 	superannuateLabel := widget.NewLabel("Superannuate")
@@ -62,6 +60,6 @@ func Run() {
 
 	mainHBox := container.NewHBox(mainMenuBox, workSpace)
 
-	agonistCanvas.SetContent(mainHBox)
+	agonistMainWindow.SetContent(mainHBox)
 	agonistMainWindow.ShowAndRun()
 }
