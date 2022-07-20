@@ -23,7 +23,6 @@ func Run() {
 	homeLabel := widget.NewLabel("Home")
 	alphabetLabel := widget.NewLabel("Alphabet order")
 	superannuateLabel := widget.NewLabel("Superannuate")
-	clarificationLabel := widget.NewLabel("Clarification")
 	ch := widget.NewSelect(
 		[]string{
 			"Option 1",
@@ -34,28 +33,32 @@ func Run() {
 	)
 	workSpace := container.NewVBox(homeLabel, ch)
 
-	homeBtn := widget.NewButton("Home", func() {
+	homeIcon, _ := fyne.LoadResourceFromPath("./static/img/icon-home-64.png")
+	homeBtn := widget.NewButtonWithIcon("", homeIcon, func() {
 		workSpace.Objects = []fyne.CanvasObject{
 			homeLabel,
 			ch,
 		}
 	})
-	alphabet := widget.NewButton("Alphabet order", func() {
+
+	alphabetIcon, _ := fyne.LoadResourceFromPath("./static/img/icon-info-64.png")
+	alphabetBtn := widget.NewButtonWithIcon("", alphabetIcon, func() {
 		workSpace.Objects = []fyne.CanvasObject{
 			alphabetLabel,
 		}
 	})
-	superannuate := widget.NewButton("Superannuate", func() {
+
+	superannuateIcon, _ := fyne.LoadResourceFromPath("./static/img/icon-clock-64.png")
+	superannuateBtn := widget.NewButtonWithIcon("", superannuateIcon, func() {
 		workSpace.Objects = []fyne.CanvasObject{
 			superannuateLabel,
 		}
 	})
-	clarification := widget.NewButton("Clarification", func() {
-		workSpace.Objects = []fyne.CanvasObject{
-			clarificationLabel,
-		}
-	})
-	mainMenuBox := container.NewVBox(homeBtn, alphabet, superannuate, clarification)
+
+	aboutIcon, _ := fyne.LoadResourceFromPath("./static/img/icon-about-64.png")
+	aboutBtn := widget.NewButtonWithIcon("", aboutIcon, func() {})
+
+	mainMenuBox := container.NewVBox(homeBtn, alphabetBtn, superannuateBtn, aboutBtn)
 
 	mainHBox := container.NewHBox(mainMenuBox, workSpace)
 
