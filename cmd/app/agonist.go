@@ -9,24 +9,12 @@ import (
 
 var appAgonist agonistApp
 
-func (a *agonistApp) CreateElements() {
+func (a *agonistApp) createElements() {
 	// FIXME: Delete this label after develop struct
 	a.winElem.blankLabel = widget.NewLabel("Blank label Blank label Blank label Blank label Blank label")
 
-	a.winElem.settToken = widget.NewEntry()
-	a.winElem.settSource = widget.NewSelectEntry([]string{
-		"https://github.com/avelino/awesome-go/README.md",
-		"https://github.com/Kwynto/awesome-go/README.md",
-	})
-	a.winElem.settSave = widget.NewButton("Save settings", SaveSettings())
-	{
-		item1 := widget.NewFormItem("GitHub Token:", a.winElem.settToken)
-		item2 := widget.NewFormItem("Source:", a.winElem.settSource)
-		item3 := widget.NewFormItem("", a.winElem.settSave)
-		a.winElem.settForm = widget.NewForm(item1, item2, item3)
-	}
+	a.createCardSettings()
 
-	a.winElem.settingsCard = widget.NewCard("Settings", "You need to fill in and save the settings for the further correct operation of the program.", a.winElem.settForm)
 	a.winElem.alphabetCard = widget.NewCard("Checking alphabetical order.", "Here you can check if the package list is in alphabetical order.", a.winElem.blankLabel)
 	a.winElem.superannuateCard = widget.NewCard("Checking for outdated packages.", "A package is considered obsolete if it has not been updated for more than a year.", a.winElem.blankLabel)
 	a.winElem.aboutCard = widget.NewCard("About.", "Information about the program, author and external components.", a.winElem.blankLabel)
@@ -49,7 +37,7 @@ func (a *agonistApp) CreateElements() {
 	}
 }
 
-func (a *agonistApp) CreateApplication() {
+func (a *agonistApp) createApplication() {
 	a.app = app.New()
 
 	a.mainWindow = a.app.NewWindow("[AGo]nist")
@@ -61,7 +49,7 @@ func (a *agonistApp) CreateApplication() {
 	a.mainWindow.CenterOnScreen()
 	a.mainWindow.SetFixedSize(true)
 
-	a.CreateElements()
+	a.createElements()
 
 	a.workSpace = container.NewVBox(a.winElem.settingsCard, a.winElem.alphabetCard, a.winElem.superannuateCard, a.winElem.aboutCard)
 	a.mainMenuBox = container.NewVBox(a.winElem.homeBtn, a.winElem.alphabetBtn, a.winElem.superannuateBtn, a.winElem.aboutBtn)
@@ -71,7 +59,7 @@ func (a *agonistApp) CreateApplication() {
 }
 
 func Run() {
-	appAgonist.CreateApplication()
+	appAgonist.createApplication()
 
 	appAgonist.winElem.settingsCard.Show()
 	appAgonist.winElem.alphabetCard.Hide()
