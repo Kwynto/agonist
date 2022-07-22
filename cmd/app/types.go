@@ -28,4 +28,9 @@ type agonistElements struct {
 	alphabetBtn,
 	superannuateBtn,
 	aboutBtn *widget.Button
+
+	settToken  *widget.Entry
+	settSource *widget.SelectEntry
+	settSave   *widget.Button
+	settForm   *widget.Form
 }
