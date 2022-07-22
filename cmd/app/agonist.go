@@ -19,22 +19,7 @@ func (a *agonistApp) createElements() {
 	a.winElem.superannuateCard = widget.NewCard("Checking for outdated packages.", "A package is considered obsolete if it has not been updated for more than a year.", a.winElem.blankLabel)
 	a.winElem.aboutCard = widget.NewCard("About.", "Information about the program, author and external components.", a.winElem.blankLabel)
 
-	{
-		icon, _ := fyne.LoadResourceFromPath("./static/img/icon-home-64.png")
-		a.winElem.homeBtn = widget.NewButtonWithIcon("", icon, a.homeBtn())
-	}
-	{
-		icon, _ := fyne.LoadResourceFromPath("./static/img/icon-info-64.png")
-		a.winElem.alphabetBtn = widget.NewButtonWithIcon("", icon, a.alphabetBtn())
-	}
-	{
-		icon, _ := fyne.LoadResourceFromPath("./static/img/icon-clock-64.png")
-		a.winElem.superannuateBtn = widget.NewButtonWithIcon("", icon, a.superannuateBtn())
-	}
-	{
-		icon, _ := fyne.LoadResourceFromPath("./static/img/icon-about-64.png")
-		a.winElem.aboutBtn = widget.NewButtonWithIcon("", icon, a.aboutBtn())
-	}
+	a.createMenuButtons()
 }
 
 func (a *agonistApp) createApplication() {
@@ -45,7 +30,7 @@ func (a *agonistApp) createApplication() {
 		icon, _ := fyne.LoadResourceFromPath("icon.png")
 		a.mainWindow.SetIcon(icon)
 	}
-	a.mainWindow.Resize(fyne.NewSize(600, 450))
+	a.mainWindow.Resize(fyne.NewSize(700, 420))
 	a.mainWindow.CenterOnScreen()
 	a.mainWindow.SetFixedSize(true)
 
