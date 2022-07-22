@@ -35,3 +35,9 @@ func (a *agonistApp) aboutBtn() func() {
 		a.winElem.aboutCard.Show()
 	}
 }
+
+func SaveSettings() func() {
+	return func() {
+		//
+	}
+}
