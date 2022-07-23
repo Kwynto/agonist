@@ -17,20 +17,25 @@ type agonistApp struct {
 }
 
 type agonistElements struct {
-	blankLabel *widget.Label
+	developLabel *widget.Label
 
 	settingsCard,
 	alphabetCard,
-	superannuateCard,
+	outdateCard,
 	aboutCard *widget.Card
 
 	homeBtn,
 	alphabetBtn,
-	superannuateBtn,
+	outdateBtn,
 	aboutBtn *widget.Button
 
 	settToken  *widget.Entry
 	settSource *widget.SelectEntry
 	settSave   *widget.Button
 	settForm   *widget.Form
+
+	alphaTestStart *widget.Button
+	alphaBar       *widget.ProgressBar
+	alphaResult    *widget.Entry
+	alphaBox       *fyne.Container
 }

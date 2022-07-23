@@ -11,13 +11,13 @@ var appAgonist agonistApp
 
 func (a *agonistApp) createElements() {
 	// FIXME: Delete this label after develop struct
-	a.winElem.blankLabel = widget.NewLabel("Blank label Blank label Blank label Blank label Blank label")
+	a.winElem.developLabel = widget.NewLabel("This block is under development.")
 
 	a.createCardSettings()
+	a.createCardAlphabet()
 
-	a.winElem.alphabetCard = widget.NewCard("Checking alphabetical order.", "Here you can check if the package list is in alphabetical order.", a.winElem.blankLabel)
-	a.winElem.superannuateCard = widget.NewCard("Checking for outdated packages.", "A package is considered obsolete if it has not been updated for more than a year.", a.winElem.blankLabel)
-	a.winElem.aboutCard = widget.NewCard("About.", "Information about the program, author and external components.", a.winElem.blankLabel)
+	a.winElem.outdateCard = widget.NewCard("Checking for outdated packages.", "A package is considered obsolete if it has not been updated for more than a year.", a.winElem.developLabel)
+	a.winElem.aboutCard = widget.NewCard("About.", "Information about the program, author and external components.", a.winElem.developLabel)
 
 	a.createMenuButtons()
 }
@@ -30,14 +30,14 @@ func (a *agonistApp) createApplication() {
 		icon, _ := fyne.LoadResourceFromPath("icon.png")
 		a.mainWindow.SetIcon(icon)
 	}
-	a.mainWindow.Resize(fyne.NewSize(700, 420))
+	a.mainWindow.Resize(fyne.NewSize(700, 415))
 	a.mainWindow.CenterOnScreen()
 	a.mainWindow.SetFixedSize(true)
 
 	a.createElements()
 
-	a.workSpace = container.NewVBox(a.winElem.settingsCard, a.winElem.alphabetCard, a.winElem.superannuateCard, a.winElem.aboutCard)
-	a.mainMenuBox = container.NewVBox(a.winElem.homeBtn, a.winElem.alphabetBtn, a.winElem.superannuateBtn, a.winElem.aboutBtn)
+	a.workSpace = container.NewGridWrap(fyne.NewSize(650, 405), a.winElem.settingsCard, a.winElem.alphabetCard, a.winElem.outdateCard, a.winElem.aboutCard)
+	a.mainMenuBox = container.NewVBox(a.winElem.homeBtn, a.winElem.alphabetBtn, a.winElem.outdateBtn, a.winElem.aboutBtn)
 	a.mainHBox = container.NewHBox(a.mainMenuBox, a.workSpace)
 
 	a.mainWindow.SetContent(a.mainHBox)
@@ -48,7 +48,7 @@ func Run() {
 
 	appAgonist.winElem.settingsCard.Show()
 	appAgonist.winElem.alphabetCard.Hide()
-	appAgonist.winElem.superannuateCard.Hide()
+	appAgonist.winElem.outdateCard.Hide()
 	appAgonist.winElem.aboutCard.Hide()
 
 	appAgonist.mainWindow.ShowAndRun()

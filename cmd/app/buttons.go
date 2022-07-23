@@ -13,7 +13,7 @@ func (a *agonistApp) createMenuButtons() {
 	a.winElem.alphabetBtn = widget.NewButtonWithIcon("", icon, a.alphabetBtn())
 
 	icon, _ = fyne.LoadResourceFromPath("./static/img/icon-clock-64.png")
-	a.winElem.superannuateBtn = widget.NewButtonWithIcon("", icon, a.superannuateBtn())
+	a.winElem.outdateBtn = widget.NewButtonWithIcon("", icon, a.outdateBtn())
 
 	icon, _ = fyne.LoadResourceFromPath("./static/img/icon-about-64.png")
 	a.winElem.aboutBtn = widget.NewButtonWithIcon("", icon, a.aboutBtn())
