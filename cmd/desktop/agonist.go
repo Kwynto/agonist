@@ -12,6 +12,7 @@ func (a *agonistApp) createElements() {
 	a.createCardSettings()
 	a.createCardAlphabet()
 	a.createCardOutdate()
+	a.createCardGenSite()
 	a.createCardAbout()
 
 	a.createMenuButtons()
@@ -31,8 +32,20 @@ func (a *agonistApp) createApplication() {
 
 	a.createElements()
 
-	a.workSpace = container.NewGridWrap(fyne.NewSize(650, 405), a.winElem.settingsCard, a.winElem.alphabetCard, a.winElem.outdateCard, a.winElem.aboutCard)
-	a.mainMenuBox = container.NewVBox(a.winElem.homeBtn, a.winElem.alphabetBtn, a.winElem.outdateBtn, a.winElem.aboutBtn)
+	a.workSpace = container.NewGridWrap(fyne.NewSize(650, 405),
+		a.winElem.settingsCard,
+		a.winElem.alphabetCard,
+		a.winElem.outdateCard,
+		a.winElem.genSiteCard,
+		a.winElem.aboutCard,
+	)
+	a.mainMenuBox = container.NewVBox(
+		a.winElem.homeBtn,
+		a.winElem.alphabetBtn,
+		a.winElem.outdateBtn,
+		a.winElem.genSiteBtn,
+		a.winElem.aboutBtn,
+	)
 	a.mainHBox = container.NewHBox(a.mainMenuBox, a.workSpace)
 
 	a.mainWindow.SetContent(a.mainHBox)
@@ -44,10 +57,11 @@ func Run() {
 	appAgonist.winElem.settingsCard.Show()
 	appAgonist.winElem.alphabetCard.Hide()
 	appAgonist.winElem.outdateCard.Hide()
+	appAgonist.winElem.genSiteCard.Hide()
 	appAgonist.winElem.aboutCard.Hide()
 
-	appAgonist.winElem.alphabetBtn.Disable()
-	appAgonist.winElem.outdateBtn.Disable()
+	// appAgonist.winElem.alphabetBtn.Disable()
+	// appAgonist.winElem.outdateBtn.Disable()
 
 	appAgonist.mainWindow.ShowAndRun()
 }

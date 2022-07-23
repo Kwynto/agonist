@@ -15,6 +15,9 @@ func (a *agonistApp) createMenuButtons() {
 	icon, _ = fyne.LoadResourceFromPath("./static/img/icon-clock-64.png")
 	a.winElem.outdateBtn = widget.NewButtonWithIcon("", icon, a.outdateBtn())
 
+	icon, _ = fyne.LoadResourceFromPath("./static/img/icon-gensite-64.png")
+	a.winElem.genSiteBtn = widget.NewButtonWithIcon("", icon, a.genSiteBtn())
+
 	icon, _ = fyne.LoadResourceFromPath("./static/img/icon-about-64.png")
 	a.winElem.aboutBtn = widget.NewButtonWithIcon("", icon, a.aboutBtn())
 }

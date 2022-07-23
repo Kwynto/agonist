@@ -12,7 +12,10 @@ func (a *agonistApp) createCardSettings() {
 		"https://github.com/Kwynto/awesome-go/README.md",
 	})
 	a.winElem.settSave = widget.NewButton("Save settings and preload", a.saveSettings())
-	a.winElem.settLog = widget.NewTextGrid()
+	a.winElem.settLog = widget.NewMultiLineEntry()
+	a.winElem.settLog.SetMinRowsVisible(7)
+	a.winElem.settLog.Disable()
+	a.winElem.settLog.SetText("[AGo]nist started.\n")
 	{
 		item1 := widget.NewFormItem("GitHub Token:", a.winElem.settToken)
 		item2 := widget.NewFormItem("Source:", a.winElem.settSource)
@@ -20,7 +23,11 @@ func (a *agonistApp) createCardSettings() {
 		item4 := widget.NewFormItem("Log:", a.winElem.settLog)
 		a.winElem.settForm = widget.NewForm(item1, item2, item3, item4)
 	}
-	a.winElem.settingsCard = widget.NewCard("Settings", "You need to fill in and save the settings for the further correct operation of the program.", a.winElem.settForm)
+	a.winElem.settingsCard = widget.NewCard(
+		"Settings",
+		"You need to fill in and save the settings for the further correct operation of the program.",
+		a.winElem.settForm,
+	)
 }
 
 func (a *agonistApp) createCardAlphabet() {
@@ -29,11 +36,16 @@ func (a *agonistApp) createCardAlphabet() {
 	alphaBox := container.NewGridWithColumns(2, a.winElem.alphaTestStart, a.winElem.alphaBar)
 	a.winElem.alphaResult = widget.NewMultiLineEntry()
 	a.winElem.alphaResult.SetMinRowsVisible(11)
+	a.winElem.alphaResult.Disable()
 	a.winElem.alphaBox = container.NewVBox(
 		alphaBox,
 		a.winElem.alphaResult,
 	)
-	a.winElem.alphabetCard = widget.NewCard("Checking alphabetical order.", "Here you can check if the package list is in alphabetical order.", a.winElem.alphaBox)
+	a.winElem.alphabetCard = widget.NewCard(
+		"Checking alphabetical order.",
+		"Here you can check if the package list is in alphabetical order.",
+		a.winElem.alphaBox,
+	)
 }
 
 func (a *agonistApp) createCardOutdate() {
@@ -42,15 +54,42 @@ func (a *agonistApp) createCardOutdate() {
 	outdateBox := container.NewGridWithColumns(2, a.winElem.outdateTestStart, a.winElem.outdateBar)
 	a.winElem.outdateResult = widget.NewMultiLineEntry()
 	a.winElem.outdateResult.SetMinRowsVisible(11)
+	a.winElem.outdateResult.Disable()
 	a.winElem.outdateBox = container.NewVBox(
 		outdateBox,
 		a.winElem.outdateResult,
 	)
-	a.winElem.outdateCard = widget.NewCard("Checking for outdated packages.", "A package is considered obsolete if it has not been updated for more than a year.", a.winElem.outdateBox)
+	a.winElem.outdateCard = widget.NewCard(
+		"Checking for outdated packages.",
+		"A package is considered obsolete if it has not been updated for more than a year.",
+		a.winElem.outdateBox,
+	)
+}
+
+func (a *agonistApp) createCardGenSite() {
+	a.winElem.genSiteStart = widget.NewButton("Generate web site", a.generateSite())
+	a.winElem.genSiteBar = widget.NewProgressBar()
+	genSiteBox := container.NewGridWithColumns(2, a.winElem.genSiteStart, a.winElem.genSiteBar)
+	a.winElem.genSiteLog = widget.NewMultiLineEntry()
+	a.winElem.genSiteLog.SetMinRowsVisible(11)
+	a.winElem.genSiteLog.Disable()
+	a.winElem.genSiteBox = container.NewVBox(
+		genSiteBox,
+		a.winElem.genSiteLog,
+	)
+	a.winElem.genSiteCard = widget.NewCard(
+		"Генерация вэб сайта",
+		"Здесь можно сгенерировать сайт.",
+		a.winElem.genSiteBox,
+	)
 }
 
 func (a *agonistApp) createCardAbout() {
 	aboutText := widget.NewTextGrid()
 	aboutText.SetText("There will be information about the author, \nthanks for the components used, \nlinks and more.\n")
-	a.winElem.aboutCard = widget.NewCard("About.", "Information about the program, author and external components.", aboutText)
+	a.winElem.aboutCard = widget.NewCard(
+		"About.",
+		"Information about the program, author and external components.",
+		aboutText,
+	)
 }

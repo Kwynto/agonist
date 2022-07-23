@@ -20,17 +20,19 @@ type agonistElements struct {
 	settingsCard,
 	alphabetCard,
 	outdateCard,
+	genSiteCard,
 	aboutCard *widget.Card
 
 	homeBtn,
 	alphabetBtn,
 	outdateBtn,
+	genSiteBtn,
 	aboutBtn *widget.Button
 
 	settToken  *widget.Entry
 	settSource *widget.SelectEntry
 	settSave   *widget.Button
-	settLog    *widget.TextGrid
+	settLog    *widget.Entry
 	settForm   *widget.Form
 
 	alphaTestStart *widget.Button
@@ -42,4 +44,9 @@ type agonistElements struct {
 	outdateBar       *widget.ProgressBar
 	outdateResult    *widget.Entry
 	outdateBox       *fyne.Container
+
+	genSiteStart *widget.Button
+	genSiteBar   *widget.ProgressBar
+	genSiteLog   *widget.Entry
+	genSiteBox   *fyne.Container
 }
