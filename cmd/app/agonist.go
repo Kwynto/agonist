@@ -4,22 +4,15 @@ import (
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/app"
 	"fyne.io/fyne/v2/container"
-	"fyne.io/fyne/v2/widget"
 )
 
 var appAgonist agonistApp
 
 func (a *agonistApp) createElements() {
-	// FIXME: Delete this label after develop struct
-	a.winElem.developLabel = widget.NewLabel("This block is under development.")
-
 	a.createCardSettings()
 	a.createCardAlphabet()
 	a.createCardOutdate()
-
-	testText := widget.NewTextGrid()
-	testText.SetText("lsjfal\njfljas\n f\n")
-	a.winElem.aboutCard = widget.NewCard("About.", "Information about the program, author and external components.", testText)
+	a.createCardAbout()
 
 	a.createMenuButtons()
 }

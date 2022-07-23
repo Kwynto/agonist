@@ -46,3 +46,9 @@ func (a *agonistApp) createCardOutdate() {
 	)
 	a.winElem.outdateCard = widget.NewCard("Checking for outdated packages.", "A package is considered obsolete if it has not been updated for more than a year.", a.winElem.outdateBox)
 }
+
+func (a *agonistApp) createCardAbout() {
+	aboutText := widget.NewTextGrid()
+	aboutText.SetText("There will be information about the author, \nthanks for the components used, \nlinks and more.\n")
+	a.winElem.aboutCard = widget.NewCard("About.", "Information about the program, author and external components.", aboutText)
+}

@@ -17,8 +17,6 @@ type agonistApp struct {
 }
 
 type agonistElements struct {
-	developLabel *widget.Label
-
 	settingsCard,
 	alphabetCard,
 	outdateCard,
