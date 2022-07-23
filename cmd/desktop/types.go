@@ -1,4 +1,4 @@
-package app
+package desktop
 
 import (
 	"fyne.io/fyne/v2"
@@ -30,6 +30,7 @@ type agonistElements struct {
 	settToken  *widget.Entry
 	settSource *widget.SelectEntry
 	settSave   *widget.Button
+	settLog    *widget.TextGrid
 	settForm   *widget.Form
 
 	alphaTestStart *widget.Button

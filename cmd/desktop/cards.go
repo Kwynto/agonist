@@ -1,4 +1,4 @@
-package app
+package desktop
 
 import (
 	"fyne.io/fyne/v2/container"
@@ -11,12 +11,14 @@ func (a *agonistApp) createCardSettings() {
 		"https://github.com/avelino/awesome-go/README.md",
 		"https://github.com/Kwynto/awesome-go/README.md",
 	})
-	a.winElem.settSave = widget.NewButton("Save settings", a.saveSettings())
+	a.winElem.settSave = widget.NewButton("Save settings and preload", a.saveSettings())
+	a.winElem.settLog = widget.NewTextGrid()
 	{
 		item1 := widget.NewFormItem("GitHub Token:", a.winElem.settToken)
 		item2 := widget.NewFormItem("Source:", a.winElem.settSource)
 		item3 := widget.NewFormItem("", a.winElem.settSave)
-		a.winElem.settForm = widget.NewForm(item1, item2, item3)
+		item4 := widget.NewFormItem("Log:", a.winElem.settLog)
+		a.winElem.settForm = widget.NewForm(item1, item2, item3, item4)
 	}
 	a.winElem.settingsCard = widget.NewCard("Settings", "You need to fill in and save the settings for the further correct operation of the program.", a.winElem.settForm)
 }

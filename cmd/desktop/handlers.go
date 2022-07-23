@@ -1,4 +1,4 @@
-package app
+package desktop
 
 func (a *agonistApp) homeBtn() func() {
 	return func() {

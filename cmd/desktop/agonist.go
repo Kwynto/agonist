@@ -1,4 +1,4 @@
-package app
+package desktop
 
 import (
 	"fyne.io/fyne/v2"
@@ -45,6 +45,9 @@ func Run() {
 	appAgonist.winElem.alphabetCard.Hide()
 	appAgonist.winElem.outdateCard.Hide()
 	appAgonist.winElem.aboutCard.Hide()
+
+	appAgonist.winElem.alphabetBtn.Disable()
+	appAgonist.winElem.outdateBtn.Disable()
 
 	appAgonist.mainWindow.ShowAndRun()
 }
