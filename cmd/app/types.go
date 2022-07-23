@@ -38,4 +38,9 @@ type agonistElements struct {
 	alphaBar       *widget.ProgressBar
 	alphaResult    *widget.Entry
 	alphaBox       *fyne.Container
+
+	outdateTestStart *widget.Button
+	outdateBar       *widget.ProgressBar
+	outdateResult    *widget.Entry
+	outdateBox       *fyne.Container
 }

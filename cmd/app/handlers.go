@@ -47,3 +47,9 @@ func (a *agonistApp) testAlpha() func() {
 		//
 	}
 }
+
+func (a *agonistApp) testOutdate() func() {
+	return func() {
+		//
+	}
+}

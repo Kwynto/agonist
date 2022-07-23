@@ -33,3 +33,16 @@ func (a *agonistApp) createCardAlphabet() {
 	)
 	a.winElem.alphabetCard = widget.NewCard("Checking alphabetical order.", "Here you can check if the package list is in alphabetical order.", a.winElem.alphaBox)
 }
+
+func (a *agonistApp) createCardOutdate() {
+	a.winElem.outdateTestStart = widget.NewButton("Start test", a.testOutdate())
+	a.winElem.outdateBar = widget.NewProgressBar()
+	outdateBox := container.NewGridWithColumns(2, a.winElem.outdateTestStart, a.winElem.outdateBar)
+	a.winElem.outdateResult = widget.NewMultiLineEntry()
+	a.winElem.outdateResult.SetMinRowsVisible(11)
+	a.winElem.outdateBox = container.NewVBox(
+		outdateBox,
+		a.winElem.outdateResult,
+	)
+	a.winElem.outdateCard = widget.NewCard("Checking for outdated packages.", "A package is considered obsolete if it has not been updated for more than a year.", a.winElem.outdateBox)
+}

@@ -15,9 +15,11 @@ func (a *agonistApp) createElements() {
 
 	a.createCardSettings()
 	a.createCardAlphabet()
+	a.createCardOutdate()
 
-	a.winElem.outdateCard = widget.NewCard("Checking for outdated packages.", "A package is considered obsolete if it has not been updated for more than a year.", a.winElem.developLabel)
-	a.winElem.aboutCard = widget.NewCard("About.", "Information about the program, author and external components.", a.winElem.developLabel)
+	testText := widget.NewTextGrid()
+	testText.SetText("lsjfal\njfljas\n f\n")
+	a.winElem.aboutCard = widget.NewCard("About.", "Information about the program, author and external components.", testText)
 
 	a.createMenuButtons()
 }
