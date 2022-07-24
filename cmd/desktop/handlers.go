@@ -1,5 +1,10 @@
 package desktop
 
+import (
+	"encoding/json"
+	"os"
+)
+
 func (a *agonistApp) homeBtn() func() {
 	return func() {
 		a.winElem.settingsCard.Show()
@@ -52,7 +57,21 @@ func (a *agonistApp) aboutBtn() func() {
 
 func (a *agonistApp) saveSettings() func() {
 	return func() {
-		//
+		// var outEnv agonistEnv
+
+		a.env.ghTiket = a.winElem.settToken.Text
+		a.env.sourcePath = a.winElem.settSource.Text
+		// outEnv = a.env
+
+		out, err := os.Create("./data/cfg/settings.json")
+		if err != nil {
+			return
+		}
+		encodeJSON := json.NewEncoder(out)
+		err = encodeJSON.Encode(a.env)
+		if err != nil {
+			return
+		}
 	}
 }
 
