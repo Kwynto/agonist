@@ -54,7 +54,7 @@ type agonistElements struct {
 }
 
 type agonistEnv struct {
-	ghTiket    string
-	sourcePath string
-	isReady    bool
+	GhTiket    string `json:"Tiket"`
+	SourcePath string `json:"Source"`
+	IsReady    bool   `json:"Ready"`
 }

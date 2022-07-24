@@ -7,9 +7,9 @@ import (
 
 func (a *agonistApp) loadSettings() {
 	// Initialization enveroment
-	a.env.ghTiket = ""
-	a.env.sourcePath = ""
-	a.env.isReady = false
+	a.env.GhTiket = ""
+	a.env.SourcePath = ""
+	a.env.IsReady = false
 
 	// Load realy enveroment
 	var inEnv agonistEnv
@@ -26,6 +26,6 @@ func (a *agonistApp) loadSettings() {
 	a.env = inEnv
 
 	// Set enveroment into interface
-	a.winElem.settToken.SetText(a.env.ghTiket)
-	a.winElem.settSource.SetText(a.env.sourcePath)
+	a.winElem.settToken.SetText(a.env.GhTiket)
+	a.winElem.settSource.SetText(a.env.SourcePath)
 }

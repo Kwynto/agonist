@@ -59,8 +59,8 @@ func (a *agonistApp) saveSettings() func() {
 	return func() {
 		// var outEnv agonistEnv
 
-		a.env.ghTiket = a.winElem.settToken.Text
-		a.env.sourcePath = a.winElem.settSource.Text
+		a.env.GhTiket = a.winElem.settToken.Text
+		a.env.SourcePath = a.winElem.settSource.Text
 		// outEnv = a.env
 
 		out, err := os.Create("./data/cfg/settings.json")
