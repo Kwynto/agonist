@@ -3,6 +3,8 @@ package desktop
 import (
 	"encoding/json"
 	"os"
+
+	"github.com/Kwynto/preserves"
 )
 
 func (a *agonistApp) homeBtn() func() {
@@ -57,12 +59,25 @@ func (a *agonistApp) aboutBtn() func() {
 
 func (a *agonistApp) saveSettings() func() {
 	return func() {
-		// var outEnv agonistEnv
-
 		a.env.GhTiket = a.winElem.settToken.Text
 		a.env.SourcePath = a.winElem.settSource.Text
-		// outEnv = a.env
 
+		// Loading a target file
+		tempText := preserves.ConcatBuffer(a.winElem.settLog.Text, "README.md downloading started.\n")
+		a.winElem.settLog.SetText(tempText)
+		source := preserves.ConcatBuffer(a.env.SourcePath, "archive/refs/heads/main.zip")
+		_, err := preserves.DownloadFile(source, "./data/")
+		if err != nil {
+			tempText = preserves.ConcatBuffer(a.winElem.settLog.Text, "Loading README.md failed.\n")
+			a.winElem.settLog.SetText(tempText)
+			return
+		}
+		tempText = preserves.ConcatBuffer(a.winElem.settLog.Text, "Finished loading README.md.\n")
+		a.winElem.settLog.SetText(tempText)
+
+		// TODO: Unzip
+
+		// Save enveroment to JSON
 		out, err := os.Create("./data/cfg/settings.json")
 		if err != nil {
 			return
@@ -72,6 +87,13 @@ func (a *agonistApp) saveSettings() func() {
 		if err != nil {
 			return
 		}
+		tempText = preserves.ConcatBuffer(a.winElem.settLog.Text, "Enveroment saved.\n")
+		a.winElem.settLog.SetText(tempText)
+
+		a.env.IsReady = true
+		a.winElem.alphabetBtn.Show()
+		a.winElem.outdateBtn.Show()
+		a.winElem.genSiteBtn.Show()
 	}
 }
 

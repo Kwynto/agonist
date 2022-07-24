@@ -9,8 +9,8 @@ func (a *agonistApp) createCardSettings() {
 	a.winElem.settToken = widget.NewEntry()
 	a.winElem.settToken.PlaceHolder = "Entry token for GitHub API"
 	a.winElem.settSource = widget.NewSelectEntry([]string{
-		"https://github.com/avelino/awesome-go/README.md",
-		"https://github.com/Kwynto/awesome-go/README.md",
+		"https://github.com/avelino/awesome-go/",
+		"https://github.com/Kwynto/awesome-go/",
 	})
 	a.winElem.settSource.PlaceHolder = "Choose or entry source"
 	a.winElem.settSave = widget.NewButton("Save settings and preload", a.saveSettings())
