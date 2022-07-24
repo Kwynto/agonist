@@ -54,6 +54,8 @@ func (a *agonistApp) createApplication() {
 func Run() {
 	appAgonist.createApplication()
 
+	appAgonist.loadSettings()
+
 	appAgonist.winElem.settingsCard.Show()
 	appAgonist.winElem.alphabetCard.Hide()
 	appAgonist.winElem.outdateCard.Hide()

@@ -9,11 +9,13 @@ type agonistApp struct {
 	app        fyne.App
 	mainWindow fyne.Window
 
-	winElem agonistElements
-
 	mainHBox,
 	mainMenuBox,
 	workSpace *fyne.Container
+
+	winElem agonistElements
+
+	env agonistEnv
 }
 
 type agonistElements struct {
@@ -49,4 +51,10 @@ type agonistElements struct {
 	genSiteBar   *widget.ProgressBar
 	genSiteLog   *widget.Entry
 	genSiteBox   *fyne.Container
+}
+
+type agonistEnv struct {
+	ghTiket    string
+	sourcePath string
+	isReady    bool
 }
