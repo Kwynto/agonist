@@ -21,4 +21,4 @@ as well as willing to accept job offers.
 
 **[⬆ back to top](#agonist)**
 
-Экспериментирую с git 2 опять
+А теперь третий эксперимент
