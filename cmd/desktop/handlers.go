@@ -3,6 +3,8 @@ package desktop
 import (
 	"encoding/json"
 	"os"
+
+	"github.com/Kwynto/preserves"
 )
 
 func (a *agonistApp) homeBtn() func() {
@@ -57,12 +59,25 @@ func (a *agonistApp) aboutBtn() func() {
 
 func (a *agonistApp) saveSettings() func() {
 	return func() {
-		// var outEnv agonistEnv
-
 		a.env.GhTiket = a.winElem.settToken.Text
 		a.env.SourcePath = a.winElem.settSource.Text
-		// outEnv = a.env
 
+		// Loading a target file
+		a.outSettLog("README.md downloading started.")
+		source := preserves.ConcatBuffer(a.env.SourcePath, "archive/refs/heads/main.zip")
+		_, err := preserves.DownloadFile(source, "./data/")
+		if err != nil {
+			a.outSettLog("Loading README.md failed.")
+			return
+		}
+		a.outSettLog("Finished loading README.md.")
+
+		// Unzip
+		if resUnZip := UnZipReadMe(); !resUnZip {
+			a.outSettLog("Data is incorrect.")
+		}
+
+		// Save enveroment to JSON
 		out, err := os.Create("./data/cfg/settings.json")
 		if err != nil {
 			return
@@ -72,23 +87,29 @@ func (a *agonistApp) saveSettings() func() {
 		if err != nil {
 			return
 		}
+		a.outSettLog("Enveroment saved.")
+
+		a.env.IsReady = true
+		a.winElem.alphabetBtn.Show()
+		a.winElem.outdateBtn.Show()
+		a.winElem.genSiteBtn.Show()
 	}
 }
 
 func (a *agonistApp) testAlpha() func() {
 	return func() {
-		//
+		a.outAlphaResult("Test.")
 	}
 }
 
 func (a *agonistApp) testOutdate() func() {
 	return func() {
-		//
+		a.outOutdateResult("Test.")
 	}
 }
 
 func (a *agonistApp) generateSite() func() {
 	return func() {
-		//
+		a.outGenSiteLog("Test.")
 	}
 }

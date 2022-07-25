@@ -15,3 +15,7 @@
 # vendor/
 
 PR
+
+/data/cfg/settings.json
+/data/*.md
+/data/*.zip
