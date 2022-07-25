@@ -20,3 +20,5 @@ The author accepts proposals for participation in open source projects,
 as well as willing to accept job offers.
 
 **[⬆ back to top](#agonist)**
+
+Экспериментирую с git
