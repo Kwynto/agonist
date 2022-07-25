@@ -57,7 +57,7 @@ func (a *agonistApp) outGenSiteLog(msg string) {
 func UnZipReadMe() bool {
 	const (
 		zipFile string = "./data/main.zip"
-		srcFile string = "./awesome-go-main/README.md"
+		srcFile string = "awesome-go-main/README.md"
 		dstFile string = "./data/README.md"
 	)
 

@@ -64,6 +64,9 @@ func Run() {
 
 	// appAgonist.winElem.alphabetBtn.Disable()
 	// appAgonist.winElem.outdateBtn.Disable()
+	appAgonist.winElem.alphabetBtn.Hide()
+	appAgonist.winElem.outdateBtn.Hide()
+	appAgonist.winElem.genSiteBtn.Hide()
 
 	appAgonist.mainWindow.ShowAndRun()
 }

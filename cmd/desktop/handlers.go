@@ -59,22 +59,27 @@ func (a *agonistApp) aboutBtn() func() {
 
 func (a *agonistApp) saveSettings() func() {
 	return func() {
+		a.winElem.settSave.Disable()
+		defer a.winElem.settSave.Enable()
+
 		a.env.GhTiket = a.winElem.settToken.Text
 		a.env.SourcePath = a.winElem.settSource.Text
 
 		// Loading a target file
-		a.outSettLog("README.md downloading started.")
+		a.outSettLog("main.zip downloading started.")
 		source := preserves.ConcatBuffer(a.env.SourcePath, "archive/refs/heads/main.zip")
 		_, err := preserves.DownloadFile(source, "./data/")
 		if err != nil {
-			a.outSettLog("Loading README.md failed.")
+			a.outSettLog("Loading main.zip failed.")
 			return
 		}
-		a.outSettLog("Finished loading README.md.")
+		a.outSettLog("Finished loading main.zip.")
 
 		// Unzip
 		if resUnZip := UnZipReadMe(); !resUnZip {
-			a.outSettLog("Data is incorrect.")
+			a.outSettLog("main.zip is incorrect.")
+		} else {
+			a.outSettLog("README.md unpacked.")
 		}
 
 		// Save enveroment to JSON
