@@ -63,17 +63,14 @@ func (a *agonistApp) saveSettings() func() {
 		a.env.SourcePath = a.winElem.settSource.Text
 
 		// Loading a target file
-		tempText := preserves.ConcatBuffer(a.winElem.settLog.Text, "README.md downloading started.\n")
-		a.winElem.settLog.SetText(tempText)
+		a.outSettLog("README.md downloading started.")
 		source := preserves.ConcatBuffer(a.env.SourcePath, "archive/refs/heads/main.zip")
 		_, err := preserves.DownloadFile(source, "./data/")
 		if err != nil {
-			tempText = preserves.ConcatBuffer(a.winElem.settLog.Text, "Loading README.md failed.\n")
-			a.winElem.settLog.SetText(tempText)
+			a.outSettLog("Loading README.md failed.")
 			return
 		}
-		tempText = preserves.ConcatBuffer(a.winElem.settLog.Text, "Finished loading README.md.\n")
-		a.winElem.settLog.SetText(tempText)
+		a.outSettLog("Finished loading README.md.")
 
 		// TODO: Unzip
 
@@ -87,8 +84,7 @@ func (a *agonistApp) saveSettings() func() {
 		if err != nil {
 			return
 		}
-		tempText = preserves.ConcatBuffer(a.winElem.settLog.Text, "Enveroment saved.\n")
-		a.winElem.settLog.SetText(tempText)
+		a.outSettLog("Enveroment saved.")
 
 		a.env.IsReady = true
 		a.winElem.alphabetBtn.Show()
