@@ -72,7 +72,10 @@ func (a *agonistApp) saveSettings() func() {
 		}
 		a.outSettLog("Finished loading README.md.")
 
-		// TODO: Unzip
+		// Unzip
+		if resUnZip := UnZipReadMe(); !resUnZip {
+			a.outSettLog("Data is incorrect.")
+		}
 
 		// Save enveroment to JSON
 		out, err := os.Create("./data/cfg/settings.json")
@@ -95,18 +98,18 @@ func (a *agonistApp) saveSettings() func() {
 
 func (a *agonistApp) testAlpha() func() {
 	return func() {
-		//
+		a.outAlphaResult("Test.")
 	}
 }
 
 func (a *agonistApp) testOutdate() func() {
 	return func() {
-		//
+		a.outOutdateResult("Test.")
 	}
 }
 
 func (a *agonistApp) generateSite() func() {
 	return func() {
-		//
+		a.outGenSiteLog("Test.")
 	}
 }
