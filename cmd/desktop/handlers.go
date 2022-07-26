@@ -73,24 +73,24 @@ func (a *agonistApp) saveSettings() func() {
 		a.env.GhTiket = a.winElem.settToken.Text
 		a.env.SourcePath = a.winElem.settSource.Text
 
-		// Loading a target file // FIXME: проверить
-		a.outSettLog("main.zip downloading started.") // FIXME: проверить
+		// Loading a target file
+		a.outSettLog("main.zip downloading started.")
 		source := preserves.ConcatBuffer(a.env.SourcePath, "archive/refs/heads/main.zip")
 		_, err := preserves.DownloadFile(source, "./data/")
 		if err != nil {
-			a.outSettLog("Loading main.zip failed.") // FIXME: проверить
+			a.outSettLog("Loading main.zip failed.")
 			return
 		}
-		a.outSettLog("Finished loading main.zip.") // FIXME: проверить
+		a.outSettLog("Finished loading main.zip.")
 
 		// Unzip
 		if resUnZip := unZipReadMe(); !resUnZip {
-			a.outSettLog("main.zip is incorrect.") // FIXME: проверить
+			a.outSettLog("main.zip is incorrect.")
 		} else {
-			a.outSettLog("README.md unpacked.") // FIXME: проверить
+			a.outSettLog("README.md unpacked.")
 		}
 
-		// Save enveroment to JSON // FIXME: проверить
+		// Save enveroment to JSON
 		out, err := os.Create("./data/cfg/settings.json")
 		if err != nil {
 			return
@@ -100,7 +100,7 @@ func (a *agonistApp) saveSettings() func() {
 		if err != nil {
 			return
 		}
-		a.outSettLog("Enveroment saved.") // FIXME: проверить
+		a.outSettLog("Enveroment saved.")
 
 		// Если всё хорошо, то завершаем подготовку и показываем кнопки меню для всех скрытых разделов
 		a.env.IsReady = true

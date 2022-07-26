@@ -9,12 +9,12 @@ import (
 
 // Функция loadSettings() загружает сохраненные настройки из файла.
 func (a *agonistApp) loadSettings() {
-	// Initialization enveroment // FIXME: проверить
+	// Initialization enveroment
 	a.env.GhTiket = ""
 	a.env.SourcePath = ""
 	a.env.IsReady = false
 
-	// Load realy enveroment // FIXME: проверить
+	// Loading the real environment
 	var inEnv agonistEnv
 	in, err := os.Open("./data/cfg/settings.json")
 	if err != nil {
@@ -28,7 +28,7 @@ func (a *agonistApp) loadSettings() {
 	in.Close()
 	a.env = inEnv
 
-	// Set enveroment into interface // FIXME: проверить
+	// Set environment in GUI
 	a.winElem.settToken.SetText(a.env.GhTiket)
 	a.winElem.settSource.SetText(a.env.SourcePath)
 }
@@ -65,34 +65,6 @@ func unZipReadMe() bool {
 		srcFile string = "awesome-go-main/README.md"
 		dstFile string = "./data/README.md"
 	)
-
-	// Распаковка содержимого архива
-	// zipR, err := zip.OpenReader(zipFile)
-	// if err != nil {
-	// 	return false
-	// }
-
-	// for _, file := range zipR.File {
-	// 	if file.Name == srcFile {
-	// 		r, err := file.Open()
-	// 		if err != nil {
-	// 			return false
-	// 		}
-	// 		outF, err := os.Create(dstFile)
-	// 		if err != nil {
-	// 			return false
-	// 		}
-	// 		_, err = io.Copy(outF, r)
-	// 		if err != nil {
-	// 			return false
-	// 		}
-	// 		err = r.Close()
-	// 		if err != nil {
-	// 			return false
-	// 		}
-	// 		break
-	// 	}
-	// }
 
 	return preserves.UnZipFile(zipFile, srcFile, dstFile)
 }
