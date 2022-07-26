@@ -1,9 +1,7 @@
 package desktop
 
 import (
-	"archive/zip"
 	"encoding/json"
-	"io"
 	"os"
 
 	"github.com/Kwynto/preserves"
@@ -61,6 +59,7 @@ func (a *agonistApp) outGenSiteLog(msg string) {
 
 // Функция UnZipReadMe() распаковывает файл main.zip и извлекает из него файл README.md. Пути файлов прописаны статично в константах функции.
 func unZipReadMe() bool {
+	// Эта функция является адаптером для внешней функции распаковки.
 	const (
 		zipFile string = "./data/main.zip"
 		srcFile string = "awesome-go-main/README.md"
@@ -68,32 +67,32 @@ func unZipReadMe() bool {
 	)
 
 	// Распаковка содержимого архива
-	zipR, err := zip.OpenReader(zipFile)
-	if err != nil {
-		return false
-	}
+	// zipR, err := zip.OpenReader(zipFile)
+	// if err != nil {
+	// 	return false
+	// }
 
-	for _, file := range zipR.File {
-		if file.Name == srcFile {
-			r, err := file.Open()
-			if err != nil {
-				return false
-			}
-			outF, err := os.Create(dstFile)
-			if err != nil {
-				return false
-			}
-			_, err = io.Copy(outF, r)
-			if err != nil {
-				return false
-			}
-			err = r.Close()
-			if err != nil {
-				return false
-			}
-			break
-		}
-	}
+	// for _, file := range zipR.File {
+	// 	if file.Name == srcFile {
+	// 		r, err := file.Open()
+	// 		if err != nil {
+	// 			return false
+	// 		}
+	// 		outF, err := os.Create(dstFile)
+	// 		if err != nil {
+	// 			return false
+	// 		}
+	// 		_, err = io.Copy(outF, r)
+	// 		if err != nil {
+	// 			return false
+	// 		}
+	// 		err = r.Close()
+	// 		if err != nil {
+	// 			return false
+	// 		}
+	// 		break
+	// 	}
+	// }
 
-	return true
+	return preserves.UnZipFile(zipFile, srcFile, dstFile)
 }
