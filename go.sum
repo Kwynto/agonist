@@ -44,8 +44,8 @@ fyne.io/systray v1.10.1-0.20220621085403-9a2652634e93/go.mod h1:oM2AQqGJ1AMo4nNq
 github.com/BurntSushi/toml v0.3.1/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03qcyfWMU=
 github.com/BurntSushi/toml v1.1.0/go.mod h1:CxXYINrC8qIiEnFrOxCa7Jy5BFHlXnUU2pbicEuybxQ=
 github.com/BurntSushi/xgb v0.0.0-20160522181843-27f122750802/go.mod h1:IVnqGOEym/WlBOVXweHU+Q+/VP0lqqI8lqeDx9IjBqo=
-github.com/Kwynto/preserves v1.0.1 h1:h54u0b74uebgYASDjYJULTmkukGn4l0+78GaDYd5RHc=
-github.com/Kwynto/preserves v1.0.1/go.mod h1:BnCZhY4Hg67nuRzjdPzlfVyNOvj3Lv/80zfNGE87LyQ=
+github.com/Kwynto/preserves v0.0.2 h1:j53nKVw22rOdn/9uu95kICggpu4B2qNYMritfM/XfXc=
+github.com/Kwynto/preserves v0.0.2/go.mod h1:BnCZhY4Hg67nuRzjdPzlfVyNOvj3Lv/80zfNGE87LyQ=
 github.com/akavel/rsrc v0.10.2/go.mod h1:uLoCtb9J+EyAqh+26kdrTgmzRBFPGOolLWKpdxkKq+c=
 github.com/antihax/optional v1.0.0/go.mod h1:uupD/76wgC+ih3iEmQUL+0Ugr19nfwCT1kdvxnR2qWY=
 github.com/armon/circbuf v0.0.0-20150827004946-bbbad097214e/go.mod h1:3U/XgcO3hCbHZ8TKRvWD2dDTCfh9M9ya+I9JpbB7O8o=

@@ -4,7 +4,7 @@ go 1.17
 
 require (
 	fyne.io/fyne/v2 v2.2.3
-	github.com/Kwynto/preserves v1.0.1
+	github.com/Kwynto/preserves v0.0.2
 )
 
 require (

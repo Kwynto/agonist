@@ -1,21 +1,20 @@
 package desktop
 
 import (
-	"archive/zip"
 	"encoding/json"
-	"io"
 	"os"
 
 	"github.com/Kwynto/preserves"
 )
 
+// The loadSettings() function loads the saved settings from a file.
 func (a *agonistApp) loadSettings() {
-	// Initialization enveroment
+	// Initialization environment
 	a.env.GhTiket = ""
 	a.env.SourcePath = ""
 	a.env.IsReady = false
 
-	// Load realy enveroment
+	// Loading the real environment
 	var inEnv agonistEnv
 	in, err := os.Open("./data/cfg/settings.json")
 	if err != nil {
@@ -29,65 +28,43 @@ func (a *agonistApp) loadSettings() {
 	in.Close()
 	a.env = inEnv
 
-	// Set enveroment into interface
+	// Set environment in GUI
 	a.winElem.settToken.SetText(a.env.GhTiket)
 	a.winElem.settSource.SetText(a.env.SourcePath)
 }
 
+// The outSettLog() function displays an informational message on a new line in the window interface in the program settings section.
 func (a *agonistApp) outSettLog(msg string) {
 	tempText := preserves.ConcatBuffer(a.winElem.settLog.Text, msg, "\n")
 	a.winElem.settLog.SetText(tempText)
 }
 
+// The outAlphaResult() function prints an informational message on a new line in the window interface in the alphabetical order testing section.
 func (a *agonistApp) outAlphaResult(msg string) {
 	tempText := preserves.ConcatBuffer(a.winElem.alphaResult.Text, msg, "\n")
 	a.winElem.alphaResult.SetText(tempText)
 }
 
+// The outOutdateResult() function outputs an informational message to a new line in the window interface in the outdated repositories testing section
 func (a *agonistApp) outOutdateResult(msg string) {
 	tempText := preserves.ConcatBuffer(a.winElem.outdateResult.Text, msg, "\n")
 	a.winElem.outdateResult.SetText(tempText)
 }
 
+// The outGenSiteLog() function displays an informational message on a new line in the window interface in the site generation section
 func (a *agonistApp) outGenSiteLog(msg string) {
 	tempText := preserves.ConcatBuffer(a.winElem.genSiteLog.Text, msg, "\n")
 	a.winElem.genSiteLog.SetText(tempText)
 }
 
-func UnZipReadMe() bool {
+// The UnZipReadMe() function decompresses the main.zip file and extracts the README.md file from it. File paths are written statically in function constants.
+func unZipReadMe() bool {
+	// This function is an adapter for an external unpack function.
 	const (
 		zipFile string = "./data/main.zip"
 		srcFile string = "awesome-go-main/README.md"
 		dstFile string = "./data/README.md"
 	)
 
-	// Распаковка содержимого архива
-	zipR, err := zip.OpenReader(zipFile)
-	if err != nil {
-		return false
-	}
-
-	for _, file := range zipR.File {
-		if file.Name == srcFile {
-			r, err := file.Open()
-			if err != nil {
-				return false
-			}
-			outF, err := os.Create(dstFile)
-			if err != nil {
-				return false
-			}
-			_, err = io.Copy(outF, r)
-			if err != nil {
-				return false
-			}
-			err = r.Close()
-			if err != nil {
-				return false
-			}
-			break
-		}
-	}
-
-	return true
+	return preserves.UnZipFile(zipFile, srcFile, dstFile)
 }

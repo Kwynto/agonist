@@ -5,6 +5,7 @@ import (
 	"fyne.io/fyne/v2/widget"
 )
 
+// Creating a program settings section
 func (a *agonistApp) createCardSettings() {
 	a.winElem.settToken = widget.NewEntry()
 	a.winElem.settToken.PlaceHolder = "Entry token for GitHub API"
@@ -32,6 +33,7 @@ func (a *agonistApp) createCardSettings() {
 	)
 }
 
+// Creating an Alphabetical Order Test Section
 func (a *agonistApp) createCardAlphabet() {
 	a.winElem.alphaTestStart = widget.NewButton("Start test", a.testAlpha())
 	a.winElem.alphaBar = widget.NewProgressBar()
@@ -50,6 +52,7 @@ func (a *agonistApp) createCardAlphabet() {
 	)
 }
 
+// Create a test section for legacy repositories
 func (a *agonistApp) createCardOutdate() {
 	a.winElem.outdateTestStart = widget.NewButton("Start test", a.testOutdate())
 	a.winElem.outdateBar = widget.NewProgressBar()
@@ -68,6 +71,7 @@ func (a *agonistApp) createCardOutdate() {
 	)
 }
 
+// Create a website generation section
 func (a *agonistApp) createCardGenSite() {
 	a.winElem.genSiteStart = widget.NewButton("Generate web site", a.generateSite())
 	a.winElem.genSiteBar = widget.NewProgressBar()
@@ -80,12 +84,13 @@ func (a *agonistApp) createCardGenSite() {
 		a.winElem.genSiteLog,
 	)
 	a.winElem.genSiteCard = widget.NewCard(
-		"Генерация вэб сайта",
-		"Здесь можно сгенерировать сайт.",
+		"Web site generation",
+		"Here you can generate a site.",
 		a.winElem.genSiteBox,
 	)
 }
 
+// Creating a section for displaying information about the program
 func (a *agonistApp) createCardAbout() {
 	aboutText := widget.NewTextGrid()
 	aboutText.SetText("There will be information about the author, \nthanks for the components used, \nlinks and more.\n")
