@@ -5,19 +5,20 @@ import (
 	"fyne.io/fyne/v2/widget"
 )
 
+// Создание раздела настроек программы
 func (a *agonistApp) createCardSettings() {
 	a.winElem.settToken = widget.NewEntry()
-	a.winElem.settToken.PlaceHolder = "Entry token for GitHub API"
+	a.winElem.settToken.PlaceHolder = "Entry token for GitHub API" // FIXME: проверить
 	a.winElem.settSource = widget.NewSelectEntry([]string{
 		"https://github.com/avelino/awesome-go/",
 		"https://github.com/Kwynto/awesome-go/",
 	})
-	a.winElem.settSource.PlaceHolder = "Choose or entry source"
-	a.winElem.settSave = widget.NewButton("Save settings and preload", a.saveSettings())
+	a.winElem.settSource.PlaceHolder = "Choose or entry source"                          // FIXME: проверить
+	a.winElem.settSave = widget.NewButton("Save settings and preload", a.saveSettings()) // FIXME: проверить
 	a.winElem.settLog = widget.NewMultiLineEntry()
 	a.winElem.settLog.SetMinRowsVisible(7)
 	a.winElem.settLog.Disable()
-	a.winElem.settLog.SetText("[AGo]nist started.\n")
+	a.winElem.settLog.SetText("[AGo]nist started.\n") // FIXME: проверить
 	{
 		item1 := widget.NewFormItem("GitHub Token:", a.winElem.settToken)
 		item2 := widget.NewFormItem("Source:", a.winElem.settSource)
@@ -26,12 +27,13 @@ func (a *agonistApp) createCardSettings() {
 		a.winElem.settForm = widget.NewForm(item1, item2, item3, item4)
 	}
 	a.winElem.settingsCard = widget.NewCard(
-		"Settings",
-		"You need to fill in and save the settings for the further correct operation of the program.",
+		"Settings", // FIXME: проверить
+		"You need to fill in and save the settings for the further correct operation of the program.", // FIXME: проверить
 		a.winElem.settForm,
 	)
 }
 
+// Создание раздела тестирования алфавитного порядка
 func (a *agonistApp) createCardAlphabet() {
 	a.winElem.alphaTestStart = widget.NewButton("Start test", a.testAlpha())
 	a.winElem.alphaBar = widget.NewProgressBar()
@@ -44,12 +46,13 @@ func (a *agonistApp) createCardAlphabet() {
 		a.winElem.alphaResult,
 	)
 	a.winElem.alphabetCard = widget.NewCard(
-		"Checking alphabetical order.",
-		"Here you can check if the package list is in alphabetical order.",
+		"Checking alphabetical order.",                                     // FIXME: проверить
+		"Here you can check if the package list is in alphabetical order.", // FIXME: проверить
 		a.winElem.alphaBox,
 	)
 }
 
+// Создание раздела тестирования устаревших репозиториев
 func (a *agonistApp) createCardOutdate() {
 	a.winElem.outdateTestStart = widget.NewButton("Start test", a.testOutdate())
 	a.winElem.outdateBar = widget.NewProgressBar()
@@ -68,6 +71,7 @@ func (a *agonistApp) createCardOutdate() {
 	)
 }
 
+// Создание раздела генерации web-сайта
 func (a *agonistApp) createCardGenSite() {
 	a.winElem.genSiteStart = widget.NewButton("Generate web site", a.generateSite())
 	a.winElem.genSiteBar = widget.NewProgressBar()
@@ -86,6 +90,7 @@ func (a *agonistApp) createCardGenSite() {
 	)
 }
 
+// Создание раздела показа информации о программе
 func (a *agonistApp) createCardAbout() {
 	aboutText := widget.NewTextGrid()
 	aboutText.SetText("There will be information about the author, \nthanks for the components used, \nlinks and more.\n")

@@ -6,8 +6,10 @@ import (
 	"fyne.io/fyne/v2/container"
 )
 
+// Переменная для хранения всех элементов программы
 var appAgonist agonistApp
 
+// Создание разделов приложения и их элементов.
 func (a *agonistApp) createElements() {
 	a.createCardSettings()
 	a.createCardAlphabet()
@@ -15,9 +17,17 @@ func (a *agonistApp) createElements() {
 	a.createCardGenSite()
 	a.createCardAbout()
 
-	a.createMenuButtons()
+	// Создание рабочей области
+	a.workSpace = container.NewGridWrap(fyne.NewSize(650, 405),
+		a.winElem.settingsCard,
+		a.winElem.alphabetCard,
+		a.winElem.outdateCard,
+		a.winElem.genSiteCard,
+		a.winElem.aboutCard,
+	)
 }
 
+// Создание основных оконных элементов приложения
 func (a *agonistApp) createApplication() {
 	a.app = app.New()
 
@@ -30,43 +40,39 @@ func (a *agonistApp) createApplication() {
 	a.mainWindow.CenterOnScreen()
 	a.mainWindow.SetFixedSize(true)
 
+	// Создание рабочей обласит приложения всех разделов программы
 	a.createElements()
 
-	a.workSpace = container.NewGridWrap(fyne.NewSize(650, 405),
-		a.winElem.settingsCard,
-		a.winElem.alphabetCard,
-		a.winElem.outdateCard,
-		a.winElem.genSiteCard,
-		a.winElem.aboutCard,
-	)
-	a.mainMenuBox = container.NewVBox(
-		a.winElem.homeBtn,
-		a.winElem.alphabetBtn,
-		a.winElem.outdateBtn,
-		a.winElem.genSiteBtn,
-		a.winElem.aboutBtn,
-	)
+	// Создание бокового меню
+	a.createMenuButtons()
+
+	// Основной горизонтальный контейнер
 	a.mainHBox = container.NewHBox(a.mainMenuBox, a.workSpace)
 
 	a.mainWindow.SetContent(a.mainHBox)
 }
 
+// Точка запуска программы
 func Run() {
+	// Создаем основные оконные элементы приложения
 	appAgonist.createApplication()
 
 	appAgonist.loadSettings()
 
+	// Скрываем все разделы в рабочей области, кроме рарздела настроек
 	appAgonist.winElem.settingsCard.Show()
 	appAgonist.winElem.alphabetCard.Hide()
 	appAgonist.winElem.outdateCard.Hide()
 	appAgonist.winElem.genSiteCard.Hide()
 	appAgonist.winElem.aboutCard.Hide()
 
+	// Скрываем меню рабочих разделов
 	// appAgonist.winElem.alphabetBtn.Disable()
 	// appAgonist.winElem.outdateBtn.Disable()
 	appAgonist.winElem.alphabetBtn.Hide()
 	appAgonist.winElem.outdateBtn.Hide()
 	appAgonist.winElem.genSiteBtn.Hide()
 
+	// Запускаем оконный интерфейс
 	appAgonist.mainWindow.ShowAndRun()
 }
