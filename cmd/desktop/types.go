@@ -5,7 +5,7 @@ import (
 	"fyne.io/fyne/v2/widget"
 )
 
-// Основная структура приложения и его графического интерфейса.
+// The basic structure of the application and its graphical interface.
 type agonistApp struct {
 	app        fyne.App
 	mainWindow fyne.Window
@@ -19,49 +19,49 @@ type agonistApp struct {
 	env agonistEnv
 }
 
-// Тип для элементов графического интерфейса
+// Type for GUI elements
 type agonistElements struct {
-	// Карты для хранения элементов разных разделов программы
+	// Cards for storing elements of different sections of the program
 	settingsCard,
 	alphabetCard,
 	outdateCard,
 	genSiteCard,
 	aboutCard *widget.Card
 
-	// Кнопки меню программы
+	// Program menu buttons
 	homeBtn,
 	alphabetBtn,
 	outdateBtn,
 	genSiteBtn,
 	aboutBtn *widget.Button
 
-	// Элементы раздела настроек программы
+	// Elements of the program settings section
 	settToken  *widget.Entry
 	settSource *widget.SelectEntry
 	settSave   *widget.Button
 	settLog    *widget.Entry
 	settForm   *widget.Form
 
-	// Элементы раздела тестирования алфавитного порядка
+	// Alphabetical order test section elements
 	alphaTestStart *widget.Button
 	alphaBar       *widget.ProgressBar
 	alphaResult    *widget.Entry
 	alphaBox       *fyne.Container
 
-	// Элементы раздела тестирования устаревших репозиториев
+	// Elements of the Legacy Repositories Testing Section
 	outdateTestStart *widget.Button
 	outdateBar       *widget.ProgressBar
 	outdateResult    *widget.Entry
 	outdateBox       *fyne.Container
 
-	// Элементы раздела генерации web-сайта
+	// Elements of the website generation section
 	genSiteStart *widget.Button
 	genSiteBar   *widget.ProgressBar
 	genSiteLog   *widget.Entry
 	genSiteBox   *fyne.Container
 }
 
-// Тип для хранения и сохранения настроек.
+// Type to store and save settings.
 type agonistEnv struct {
 	GhTiket    string `json:"GhTiket"`
 	SourcePath string `json:"SourcePath"`

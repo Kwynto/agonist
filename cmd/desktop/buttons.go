@@ -6,7 +6,7 @@ import (
 	"fyne.io/fyne/v2/widget"
 )
 
-// Создание меню программы
+// Creating a program menu
 func (a *agonistApp) createMenuButtons() {
 	icon, _ := fyne.LoadResourceFromPath("./static/img/icon-home-64.png")
 	a.winElem.homeBtn = widget.NewButtonWithIcon("", icon, a.homeBtn())
@@ -23,7 +23,7 @@ func (a *agonistApp) createMenuButtons() {
 	icon, _ = fyne.LoadResourceFromPath("./static/img/icon-about-64.png")
 	a.winElem.aboutBtn = widget.NewButtonWithIcon("", icon, a.aboutBtn())
 
-	// Вертикальный блок для размещения кнопок бокового меню
+	// Vertical block for placing side menu buttons
 	a.mainMenuBox = container.NewVBox(
 		a.winElem.homeBtn,
 		a.winElem.alphabetBtn,

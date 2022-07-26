@@ -7,7 +7,7 @@ import (
 	"github.com/Kwynto/preserves"
 )
 
-// Хэндлер нажати на кнопку agonistApp.winElem.homeBtn в меню программы для переключения раздела
+// Handler click on the agonistApp.winElem.homeBtn button in the program menu to switch the section
 func (a *agonistApp) homeBtn() func() {
 	return func() {
 		a.winElem.settingsCard.Show()
@@ -18,7 +18,7 @@ func (a *agonistApp) homeBtn() func() {
 	}
 }
 
-// Хэндлер нажати на кнопку agonistApp.winElem.alphabetBtn в меню программы для переключения раздела
+// Handler click on the button agonistApp.winElem.alphabetBtn in the program menu to switch the section
 func (a *agonistApp) alphabetBtn() func() {
 	return func() {
 		a.winElem.settingsCard.Hide()
@@ -29,7 +29,7 @@ func (a *agonistApp) alphabetBtn() func() {
 	}
 }
 
-// Хэндлер нажати на кнопку agonistApp.winElem.outdateBtn в меню программы для переключения раздела
+// Handler click on the agonistApp.winElem.outdateBtn button in the program menu to switch the section
 func (a *agonistApp) outdateBtn() func() {
 	return func() {
 		a.winElem.settingsCard.Hide()
@@ -40,7 +40,7 @@ func (a *agonistApp) outdateBtn() func() {
 	}
 }
 
-// Хэндлер нажати на кнопку agonistApp.winElem.genSiteBtn в меню программы для переключения раздела
+// Handler click on the agonistApp.winElem.genSiteBtn button in the program menu to switch the section
 func (a *agonistApp) genSiteBtn() func() {
 	return func() {
 		a.winElem.settingsCard.Hide()
@@ -51,7 +51,7 @@ func (a *agonistApp) genSiteBtn() func() {
 	}
 }
 
-// Хэндлер нажати на кнопку agonistApp.winElem.aboutBtn в меню программы для переключения раздела
+// Handler click on the button agonistApp.winElem.aboutBtn in the program menu to switch the section
 func (a *agonistApp) aboutBtn() func() {
 	return func() {
 		a.winElem.settingsCard.Hide()
@@ -62,14 +62,14 @@ func (a *agonistApp) aboutBtn() func() {
 	}
 }
 
-// Хэндлер нажати на кнопку agonistApp.winElem.settSave в разделе настроек программы для сохранения настроек и предварительной загрузки данных.
+// Handler click on the agonistApp.winElem.settSave button in the program settings section to save settings and preload data.
 func (a *agonistApp) saveSettings() func() {
 	return func() {
-		// Отключаем нажатую кнопку
+		// Disable the pressed button
 		a.winElem.settSave.Disable()
 		defer a.winElem.settSave.Enable()
 
-		// Записываем данные из оконных элементов переменные с настройками
+		// We write data from window elements variables with settings
 		a.env.GhTiket = a.winElem.settToken.Text
 		a.env.SourcePath = a.winElem.settSource.Text
 
@@ -90,7 +90,7 @@ func (a *agonistApp) saveSettings() func() {
 			a.outSettLog("README.md unpacked.")
 		}
 
-		// Save enveroment to JSON
+		// Save environment to JSON
 		out, err := os.Create("./data/cfg/settings.json")
 		if err != nil {
 			return
@@ -102,7 +102,7 @@ func (a *agonistApp) saveSettings() func() {
 		}
 		a.outSettLog("Enveroment saved.")
 
-		// Если всё хорошо, то завершаем подготовку и показываем кнопки меню для всех скрытых разделов
+		// If everything is fine, then we complete the preparation and show the menu buttons for all hidden sections
 		a.env.IsReady = true
 		a.winElem.alphabetBtn.Show()
 		a.winElem.outdateBtn.Show()
@@ -110,21 +110,21 @@ func (a *agonistApp) saveSettings() func() {
 	}
 }
 
-// Хэндлер запуска тестирования алфавитного порядка
+// Alphabetical Test Trigger Handler
 func (a *agonistApp) testAlpha() func() {
 	return func() {
 		a.outAlphaResult("Test.")
 	}
 }
 
-// Хэндлер запуска тестирования устаревших репозиториев
+// Run handler for testing obsolete repositories
 func (a *agonistApp) testOutdate() func() {
 	return func() {
 		a.outOutdateResult("Test.")
 	}
 }
 
-// Хэндлер запуска генерации web-сайта
+// Web site generation startup handler
 func (a *agonistApp) generateSite() func() {
 	return func() {
 		a.outGenSiteLog("Test.")

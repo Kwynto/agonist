@@ -7,9 +7,9 @@ import (
 	"github.com/Kwynto/preserves"
 )
 
-// Функция loadSettings() загружает сохраненные настройки из файла.
+// The loadSettings() function loads the saved settings from a file.
 func (a *agonistApp) loadSettings() {
-	// Initialization enveroment
+	// Initialization environment
 	a.env.GhTiket = ""
 	a.env.SourcePath = ""
 	a.env.IsReady = false
@@ -33,33 +33,33 @@ func (a *agonistApp) loadSettings() {
 	a.winElem.settSource.SetText(a.env.SourcePath)
 }
 
-// Функция outSettLog() выводит информационное сообщение на новую строку в оконном интерфейсе в разделе настроек программы.
+// The outSettLog() function displays an informational message on a new line in the window interface in the program settings section.
 func (a *agonistApp) outSettLog(msg string) {
 	tempText := preserves.ConcatBuffer(a.winElem.settLog.Text, msg, "\n")
 	a.winElem.settLog.SetText(tempText)
 }
 
-// Функция outAlphaResult() выводит информационное сообщение на новую строку в оконном интерфейсе в разделе тестирования алфавитного порядка.
+// The outAlphaResult() function prints an informational message on a new line in the window interface in the alphabetical order testing section.
 func (a *agonistApp) outAlphaResult(msg string) {
 	tempText := preserves.ConcatBuffer(a.winElem.alphaResult.Text, msg, "\n")
 	a.winElem.alphaResult.SetText(tempText)
 }
 
-// Функция outOutdateResult() выводит информационное сообщение на новую строку в оконном интерфейсе в разделе тестирования устаревших репозиториев
+// The outOutdateResult() function outputs an informational message to a new line in the window interface in the outdated repositories testing section
 func (a *agonistApp) outOutdateResult(msg string) {
 	tempText := preserves.ConcatBuffer(a.winElem.outdateResult.Text, msg, "\n")
 	a.winElem.outdateResult.SetText(tempText)
 }
 
-// Функция outGenSiteLog() выводит информационное сообщение на новую строку в оконном интерфейсе в разделе генерации сайта
+// The outGenSiteLog() function displays an informational message on a new line in the window interface in the site generation section
 func (a *agonistApp) outGenSiteLog(msg string) {
 	tempText := preserves.ConcatBuffer(a.winElem.genSiteLog.Text, msg, "\n")
 	a.winElem.genSiteLog.SetText(tempText)
 }
 
-// Функция UnZipReadMe() распаковывает файл main.zip и извлекает из него файл README.md. Пути файлов прописаны статично в константах функции.
+// The UnZipReadMe() function decompresses the main.zip file and extracts the README.md file from it. File paths are written statically in function constants.
 func unZipReadMe() bool {
-	// Эта функция является адаптером для внешней функции распаковки.
+	// This function is an adapter for an external unpack function.
 	const (
 		zipFile string = "./data/main.zip"
 		srcFile string = "awesome-go-main/README.md"

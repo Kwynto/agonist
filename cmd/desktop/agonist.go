@@ -6,10 +6,10 @@ import (
 	"fyne.io/fyne/v2/container"
 )
 
-// Переменная для хранения всех элементов программы
+// Variable to store all elements of the program
 var appAgonist agonistApp
 
-// Создание разделов приложения и их элементов.
+// Creation of application sections and their elements.
 func (a *agonistApp) createElements() {
 	a.createCardSettings()
 	a.createCardAlphabet()
@@ -17,7 +17,7 @@ func (a *agonistApp) createElements() {
 	a.createCardGenSite()
 	a.createCardAbout()
 
-	// Создание рабочей области
+	// Create a workspace
 	a.workSpace = container.NewGridWrap(fyne.NewSize(650, 405),
 		a.winElem.settingsCard,
 		a.winElem.alphabetCard,
@@ -27,7 +27,7 @@ func (a *agonistApp) createElements() {
 	)
 }
 
-// Создание основных оконных элементов приложения
+// Creating the main window elements of the application
 func (a *agonistApp) createApplication() {
 	a.app = app.New()
 
@@ -40,39 +40,39 @@ func (a *agonistApp) createApplication() {
 	a.mainWindow.CenterOnScreen()
 	a.mainWindow.SetFixedSize(true)
 
-	// Создание рабочей обласит приложения всех разделов программы
+	// Creation of the working area of the application of all sections of the program
 	a.createElements()
 
-	// Создание бокового меню
+	// Creating a side menu
 	a.createMenuButtons()
 
-	// Основной горизонтальный контейнер
+	// Main horizontal container
 	a.mainHBox = container.NewHBox(a.mainMenuBox, a.workSpace)
 
 	a.mainWindow.SetContent(a.mainHBox)
 }
 
-// Точка запуска программы
+// Program start point
 func Run() {
-	// Создаем основные оконные элементы приложения
+	// Creating the main window elements of the application
 	appAgonist.createApplication()
 
 	appAgonist.loadSettings()
 
-	// Скрываем все разделы в рабочей области, кроме рарздела настроек
+	// Hide all sections in the workspace, except for the settings section
 	appAgonist.winElem.settingsCard.Show()
 	appAgonist.winElem.alphabetCard.Hide()
 	appAgonist.winElem.outdateCard.Hide()
 	appAgonist.winElem.genSiteCard.Hide()
 	appAgonist.winElem.aboutCard.Hide()
 
-	// Скрываем меню рабочих разделов
+	// Hiding the menu of working sections
 	// appAgonist.winElem.alphabetBtn.Disable()
 	// appAgonist.winElem.outdateBtn.Disable()
 	appAgonist.winElem.alphabetBtn.Hide()
 	appAgonist.winElem.outdateBtn.Hide()
 	appAgonist.winElem.genSiteBtn.Hide()
 
-	// Запускаем оконный интерфейс
+	// Launching the window interface
 	appAgonist.mainWindow.ShowAndRun()
 }
