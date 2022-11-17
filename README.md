@@ -1,6 +1,8 @@
 # AGonist
 A program for checking and maintaining an awesome-go list with a user-friendly graphical interface.
 
+**_This repository is under development._**
+
 ## Contents
 
 - [GoSession](#agonist)
