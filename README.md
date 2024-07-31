@@ -5,7 +5,7 @@ A program for checking and maintaining an awesome-go list with a user-friendly g
 
 ## Contents
 
-- [GoSession](#agonist)
+- [AGonist](#agonist)
   - [Contents](#contents)
   - [About the package  (documentation, testing and benchmarking)](#about-the-package)
   - [About the author](#about-the-author)
@@ -13,6 +13,10 @@ A program for checking and maintaining an awesome-go list with a user-friendly g
 ## About the package
 
 **[⬆ back to top](#agonist)** - **[⬆ back to the chapter](#about-the-package)**
+
+## Support the author
+
+You can support open source projects and the author of this project. The details are [here](https://github.com/Kwynto/Kwynto/blob/main/SUPPORT.md).  
 
 ## About the author
 
